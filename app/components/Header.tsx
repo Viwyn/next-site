@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Header = () => {
@@ -7,7 +8,9 @@ const Header = () => {
     return (
         <div className='w-full h-fit bg-pink-950 flex place-content-center'>
             {navNames.map((item, index) => (
-                <div key={index} className={navButtonsClass}>{item}</div>
+                <div key={index} className={navButtonsClass}>
+                    <Link href={item.toLowerCase()}>{item}</Link>
+                </div>
             ))}
         </div>
     )

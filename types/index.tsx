@@ -1,6 +1,6 @@
-export interface Tasks {
+export interface Task {
     id: number;
-    userId: number;
     title: string;
-    completed: boolean;
+    team: string[];
+    status: 'pending' | 'in-progress' | 'completed';
 }

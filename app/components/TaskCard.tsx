@@ -1,12 +1,30 @@
+import { Task } from '@/types'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import React from 'react'
-import { Tasks } from '../../types'
 
-const TaskCard = ({ userId, id, title, completed}: Tasks) => {
+const rowClass = 'py-2 px-1 text-left border-2 border-rose-400'
+
+const TaskCard = ({ id, title, team, status }: Task) => {
+    const {attributes, listeners, setNodeRef, transform, transition} = useSortable({id})
+
+    const style = {
+        transition,
+        transform: CSS.Transform.toString(transform)
+    }
+
     return (
-        <div className='rounded-lg bg-rose-400 w-fit shadow-md p-4 mb-4 border-gray-300 hover:shadow-lg transition-shadow flex flex-col'>
-            <h2 className='underline text-l font-semibold text-grey-800 mb-2'>{title}</h2>
-            <p className='text-sm text-gray-600'>user: {userId}</p>
-        </div>
+        <tr key={id} ref={setNodeRef} {...attributes} {...listeners} style={style} className='task'>
+            <td className={rowClass}>
+                {title}
+            </td>
+            <td className={rowClass}>
+                {team.length > 0 ? team.join(', ') : 'N/A'}
+            </td>
+            <td className={rowClass}>
+                {status.charAt(0).toUpperCase() + status.slice(1)}
+            </td>
+        </tr>
     )
 }
 

@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import Header from "../components/Header";
+// import Header from "../components/Header";
 import TaskDisplay from "../components/TaskDisplay";
 import { Task } from "@/types";
 import { closestCorners, DndContext, DragEndEvent, UniqueIdentifier} from "@dnd-kit/core";
@@ -8,7 +8,7 @@ import { arrayMove } from "@dnd-kit/sortable";
 
 const taskDisplayLabelClass = 'font-bold text-2xl underline mb-1'
 
-const page = () => {
+const TrackerPage = () => {
     const [task, setTask] = useState<string>("")
     const [message, setMessage] = useState<string>('');
 
@@ -128,4 +128,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default TrackerPage;

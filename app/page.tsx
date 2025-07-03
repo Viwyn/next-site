@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DraggableFloatingDiv from "./components/DraggableDiv";
-import { useState } from "react";
 import { FaLink, FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 

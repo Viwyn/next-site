@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useRef, useEffect, ReactNode } from "react"
-import { IconType } from "react-icons";
 
 interface DraggableFloatingDivProps {
     children?: ReactNode;

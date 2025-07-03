@@ -26,30 +26,30 @@ export default function MainPage() {
                         <DraggableFloatingDiv initialX={50} initialY={50} isVisible={false} icon={<FaUser size={24} />} title="About Me">
                             <div className="w-full h-full flex flex-col justify-center items-center bg-purple-500 p-5 rounded-lg">
                                 <h1 className="text-2xl font-bold text-black dark:text-white">
-                                    Drag me around!
+                                    Little Something About Me
                                 </h1>
                                 <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
-                                    I'm a draggable floating div.
+                                    Hi there, my name is Riaru and I am a software developer. Please feel free to explore, my site is still a work in progress so don&apos;t expect much!
                                 </p>
                             </div>
                         </DraggableFloatingDiv>
                         <DraggableFloatingDiv initialX={50} initialY={50} isVisible={false} icon={<FaLink size={24} />} title="Links">
                             <div className="w-full h-full flex flex-col justify-center items-center bg-purple-500 p-5 rounded-lg">
                                 <h1 className="text-2xl font-bold text-black dark:text-white">
-                                    Drag me around!
+                                    My Links!
                                 </h1>
                                 <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
-                                    I'm a draggable floating div.
+                                    Links will be here eventually :3
                                 </p>
                             </div>
                         </DraggableFloatingDiv>
                         <DraggableFloatingDiv initialX={50} initialY={50} isVisible={false} icon={<MdEmail size={24} />} title="Contact">
                             <div className="w-full h-full flex flex-col justify-center items-center bg-purple-500 p-5 rounded-lg">
                                 <h1 className="text-2xl font-bold text-black dark:text-white">
-                                    Drag me around!
+                                    Contact Me
                                 </h1>
                                 <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
-                                    I'm a draggable floating div.
+                                    Contact information will be here when i fix emailing systems hehe~
                                 </p>
                             </div>
                         </DraggableFloatingDiv>

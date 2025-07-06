@@ -58,37 +58,51 @@ function App() {
 	// Mock data for posts, with the first two as AI suggestions
 	const mockPosts: Post[] = [
 		{
-			id: "ai-post-1",
-			content:
-				"Dive deep into the future of AI with our latest research on neural networks and their applications in healthcare.",
-			tags: ["AI", "Healthcare", "Research", "Future"],
-			audience: ["Technology", "Science"],
-			aiRecommendation:
-				"A must-read for AI enthusiasts and medical professionals.",
-			timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2), // 2 days ago
-			isAISuggestion: true,
-		},
-		{
-			id: "ai-post-2",
-			content:
-				"Exploring sustainable travel practices: how eco-tourism is changing the way we see the world.",
-			tags: ["Travel", "Sustainability", "Eco-tourism"],
-			audience: ["Travel", "Environment"],
-			aiRecommendation:
-				"Inspiring journey into responsible tourism. Share with fellow adventurers!",
-			timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1), // 1 day ago
-			isAISuggestion: true,
-		},
-		{
-			id: "user-post-1",
-			content:
-				'Just finished a fantastic book on quantum physics! Highly recommend "Quantum Enigmas" by Dr. Alice Smith.',
-			tags: ["Physics", "Books", "Science"],
-			audience: ["Science", "Education"],
-			aiRecommendation: "Great for curious minds!",
-			timestamp: new Date(), // Just now
-			isAISuggestion: false,
-		},
+            id: "charity-1",
+            charityName: "Save the Children",
+            content:
+                "Help us provide food, education, and emergency relief for children in need around the world. Your donation makes a difference!",
+            tags: ["Children", "Relief", "Donation"],
+            audience: ["Humanitarian", "Education"],
+            aiRecommendation:
+                "Even a small monthly donation can change a child's life.",
+            timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2),
+            isAISuggestion: true,
+        },
+        {
+            id: "charity-2",
+            charityName: "World Wildlife Fund",
+            content:
+                "Join us in protecting endangered species and their habitats. Donate today to support global conservation efforts.",
+            tags: ["Wildlife", "Environment", "Donation"],
+            audience: ["Environmental", "Animal Welfare"],
+            aiRecommendation:
+                "Share this cause with friends to multiply your impact.",
+            timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1),
+            isAISuggestion: true,
+        },
+        {
+            id: "charity-3",
+            charityName: "Direct Relief",
+            content:
+                "Support medical aid for communities affected by disasters and emergencies. 100% of your donation goes to people in need.",
+            tags: ["Medical", "Disaster Relief", "Donation"],
+            audience: ["Health", "Humanitarian"],
+            aiRecommendation: "Consider making a recurring donation for ongoing support.",
+            timestamp: new Date(Date.now() - 1000 * 60 * 60 * 12),
+            isAISuggestion: false,
+        },
+        {
+            id: "charity-4",
+            charityName: "Feeding America",
+            content:
+                "Every $1 you give helps provide at least 10 meals to families facing hunger across the US. Join us in the fight against hunger.",
+            tags: ["Food Bank", "Hunger", "Donation"],
+            audience: ["Poverty Alleviation", "Community"],
+            aiRecommendation: "Share our campaign and help us reach more families in need.",
+            timestamp: new Date(),
+            isAISuggestion: false,
+        },
 	].sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()); // Ensure latest is first
 
 	return (

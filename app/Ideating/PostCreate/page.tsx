@@ -245,7 +245,7 @@ function App() {
 					<textarea
 						id="postContent"
 						className="w-full p-3 border text-gray-800 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#FBBF24] focus:border-transparent transition duration-200 resize-y min-h-[120px]"
-						placeholder="What's on your mind? Share your thoughts here..."
+						placeholder="What is your post about?"
 						value={postContent}
 						onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
 							setPostContent(e.target.value)

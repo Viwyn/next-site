@@ -5,7 +5,7 @@ const AboutPage = () => {
     return (
         <div className="">
             <TSHeader></TSHeader>
-            <div className="h-screen w-full flex justify-center items-center bg-gray-100 dark:bg-black">
+            <div className="h-full w-full flex justify-center items-center bg-gray-100 dark:bg-black">
                 <div className="text-xl px-10 flex flex-col items-start text-left justify-center bg-gray-100 dark:bg-black text-black dark:text-white leading-relaxed">
                     <h1 className="text-5xl font-bold mb-3">About Taylorian Secrets</h1>
                     <p>

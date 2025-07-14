@@ -260,7 +260,7 @@ function App() {
 						className="text-gray-700 text-sm font-medium mb-2 flex items-center"
 					>
 						<TagIcon className="w-5 h-5 mr-2 text-[#FBBF24]" />
-						Tags (comma-separated, e.g., react, ai, webdev)
+						Tags (comma-separated, e.g., environment, health, etc.)
 					</label>
 					<input
 						type="text"

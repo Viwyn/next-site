@@ -5,22 +5,21 @@ import { PiShareFat } from "react-icons/pi";
 
 interface CharityCardProps {
     isSuggested?: boolean;
-    isVisible?: boolean; // New prop to control visibility
-    delay?: number; // New prop for animation delay
+    isVisible?: boolean; 
+    delay?: number; 
 }
 
 const CharityCard : React.FC<CharityCardProps> = ({isSuggested=false, isVisible=false, delay=0}) => {
-    const [animateClass, setAnimateClass] = useState('opacity-0 translate-y-10'); // Initial hidden state
+    const [animateClass, setAnimateClass] = useState('opacity-0 translate-y-10'); 
 
     useEffect(() => {
         if (isVisible) {
-            // Set a timeout to apply the visible class after the delay
             const timer = setTimeout(() => {
-                setAnimateClass('opacity-100 translate-y-0'); // Visible state
+                setAnimateClass('opacity-100 translate-y-0'); 
             }, delay);
-            return () => clearTimeout(timer); // Cleanup the timer
+            return () => clearTimeout(timer); 
         } else {
-            setAnimateClass('opacity-0 translate-y-10'); // Reset to hidden if not visible
+            setAnimateClass('opacity-0 translate-y-10'); 
         }
     }, [isVisible, delay]);
 

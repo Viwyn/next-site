@@ -9,40 +9,36 @@ import CharityCard from "../components/CharityCards";
 
 const PostPage = () => {
     const cardWidth = 389
-    const totalCards = 6 // This should ideally be the actual number of cards you intend to display
+    const totalCards = 6 
     const maxMovedAmount = totalCards * cardWidth
 
     const [movedAmount, setMovedAmount] = useState(0)
     const [visibleCards, setVisibleCards] = useState(0);
-    const [isLoading, setIsLoading] = useState(true); // New state for loading
+    const [isLoading, setIsLoading] = useState(true); 
 
-    // Effect to handle the initial loading delay
     useEffect(() => {
         const loadingTimer = setTimeout(() => {
             setIsLoading(false);
-        }, 1000); // 1-second loading delay
+        }, 1000); 
 
         return () => clearTimeout(loadingTimer);
     }, []);
 
-    // Effect to gradually reveal cards after loading is complete
     useEffect(() => {
         if (!isLoading) {
             const interval = setInterval(() => {
                 setVisibleCards(prev => {
-                    // Ensure totalCards is correctly set to the actual number of cards you are rendering
-                    // For example, if you are rendering 11 cards as in the map below, totalCards should be 11
-                    if (prev < 11) { // Changed to 11 to match the number of rendered cards
+                    if (prev < 6) { 
                         return prev + 1;
                     }
                     clearInterval(interval);
                     return prev;
                 });
-            }, 150); // Adjust delay between cards here (milliseconds)
+            }, 150);
 
             return () => clearInterval(interval);
         }
-    }, [isLoading]); // Run this effect when isLoading changes
+    }, [isLoading]); 
 
     const goRight = () => {
         setMovedAmount(movedAmount => {
@@ -124,13 +120,12 @@ const PostPage = () => {
                             }}
                             className="flex gap-20"
                         >
-                            {/* Render CharityCard components with animation props */}
                             {[...Array(6)].map((_, index) => (
                                 <CharityCard
                                     key={index}
-                                    isSuggested={index < 2} // Example: alternate suggested cards
-                                    isVisible={index < visibleCards} // Pass visibility state
-                                    delay={index * 100} // Pass delay for staggered animation
+                                    isSuggested={index < 2} 
+                                    isVisible={index < visibleCards} 
+                                    delay={index * 100} 
                                 />
                             ))}
                         </div>

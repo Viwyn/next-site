@@ -1,15 +1,33 @@
 'use client'
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PiShareFat } from "react-icons/pi";
 
 interface CharityCardProps {
     isSuggested?: boolean;
+    isVisible?: boolean; // New prop to control visibility
+    delay?: number; // New prop for animation delay
 }
 
-const CharityCard : React.FC<CharityCardProps> = ({isSuggested=false}) => {
+const CharityCard : React.FC<CharityCardProps> = ({isSuggested=false, isVisible=false, delay=0}) => {
+    const [animateClass, setAnimateClass] = useState('opacity-0 translate-y-10'); // Initial hidden state
+
+    useEffect(() => {
+        if (isVisible) {
+            // Set a timeout to apply the visible class after the delay
+            const timer = setTimeout(() => {
+                setAnimateClass('opacity-100 translate-y-0'); // Visible state
+            }, delay);
+            return () => clearTimeout(timer); // Cleanup the timer
+        } else {
+            setAnimateClass('opacity-0 translate-y-10'); // Reset to hidden if not visible
+        }
+    }, [isVisible, delay]);
+
 	return (
-		<div className={`flex flex-col items-center justify-start h-[440px] min-w-[369px] ${isSuggested ? 'bg-yellow-100' : 'bg-gray-100'} hover:scale-101 transition-transform duration-150 rounded-xl p-2 hover-shadow-lg py-2`}>
+		<div className={`flex flex-col items-center justify-start h-[440px] min-w-[369px] ${isSuggested ? 'bg-yellow-100' : 'bg-gray-100'} hover:scale-101 transition-transform duration-150 rounded-xl p-2 hover-shadow-lg py-2
+            ${animateClass} transition-all duration-500 ease-out`} // Apply animation classes
+        >
 			<div className="bg-gray-900 h-2/5 w-full flex items-center justify-center">
 				<h1>Image here</h1>
 			</div>
@@ -24,7 +42,7 @@ const CharityCard : React.FC<CharityCardProps> = ({isSuggested=false}) => {
                         </div>
                     </div>
 					<h1 className="font-bold text-xl text-gray-900 pt-5">
-						Organisation 1
+						Organisation Name
 					</h1>
 				</div>
 				<div className="flex flex-col items-start justify-between w-full pt-3 border-b-2 border-gray-300 pb-5">

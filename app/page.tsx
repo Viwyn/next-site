@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DraggableFloatingDiv from "./components/DraggableDiv";
@@ -40,6 +40,20 @@ export default function MainPage() {
         return { userTime, myTime, userTimezone };
     };
 
+    // Memoize the Particles component to prevent re-rendering on state changes
+    const particlesComponent = useMemo(() => (
+        <Particles
+            particleColors={["#F5A9B8", "#FFFFFF", "#5BCEFA", "#F5A9B8"]}
+            particleCount={1000}
+            particleSpread={20}
+            speed={0.5}
+            particleBaseSize={300}
+            moveParticlesOnHover={false}
+            alphaParticles={false}
+            disableRotation={true}
+        />
+    ), []);
+
     return (
         <div className="min-h-screen min-w-full flex flex-col items-center justify-center bg-pink-50 dark:bg-slate-900 relative">
             <div
@@ -53,16 +67,7 @@ export default function MainPage() {
                     pointerEvents: "none",
                 }}
             >
-                <Particles
-                    particleColors={["#F5A9B8", "#FFFFFF", "#5BCEFA", "#F5A9B8"]}
-                    particleCount={1000}
-                    particleSpread={20}
-                    speed={0.5}
-                    particleBaseSize={300}
-                    moveParticlesOnHover={false}
-                    alphaParticles={false}
-                    disableRotation={true}
-                />
+                {particlesComponent}
             </div>
             <div className="relative z-1 flex flex-col items-center justify-center flex-grow w-full">
                 <Header />

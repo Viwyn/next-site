@@ -4,9 +4,9 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DraggableFloatingDiv from "./components/DraggableDiv";
-import { FaGithub, FaLink, FaLinkedin, FaUser, FaTwitter, FaInstagram, FaYoutube, FaDiscord, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
-import { SiSpotify, SiSteam } from "react-icons/si";
+import { FaGithub, FaLink, FaLinkedin, FaUser, FaTwitter, FaInstagram, FaYoutube, FaDiscord, FaEnvelope} from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { SiSteam } from "react-icons/si";
 import Particles from "./components/Particles";
 
 export default function MainPage() {
@@ -106,10 +106,10 @@ export default function MainPage() {
                                             </div>
                                             <div>
                                                 <h3 className="text-xl font-comfortaa font-semibold text-slate-700 dark:text-pink-100 mb-1">
-                                                    I'm Riaru!
+                                                    I&apos;m Riaru!
                                                 </h3>
                                                 <p className="text-base font-comfortaa font-normal text-slate-600 dark:text-pink-200">
-                                                    A <span className="font-bold text-pink-500 dark:text-pink-300">student software developer</span> currently pursuing my Bachelor's in Computer Science with a specialization in <span className="font-medium text-blue-500 dark:text-blue-300">Artificial Intelligence</span>!
+                                                    A <span className="font-bold text-pink-500 dark:text-pink-300">student software developer</span> currently pursuing my Bachelor&apos;s in Computer Science with a specialization in <span className="font-medium text-blue-500 dark:text-blue-300">Artificial Intelligence</span>!
                                                 </p>
                                             </div>
                                         </div>
@@ -124,7 +124,7 @@ export default function MainPage() {
                                                     My coding journey started...
                                                 </h3>
                                                 <p className="text-base font-comfortaa font-light text-slate-600 dark:text-pink-200">
-                                                    ...from pure <span className="font-bold text-purple-500 dark:text-purple-300">curiosity</span> about what computers could do! Now I'm totally hooked on the endless possibilities ✨
+                                                    ...from pure <span className="font-bold text-purple-500 dark:text-purple-300">curiosity</span> about what computers could do! Now I&apos;m totally hooked on the endless possibilities ✨
                                                 </p>
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@ export default function MainPage() {
                                         {/* header */}
                                         <div className="text-center">
                                             <h1 className="text-3xl font-comfortaa font-bold text-slate-800 dark:text-sky-100 mb-2">
-                                                🔗 Let's Connect! 🔗
+                                                🔗 Let&apos;s Connect! 🔗
                                             </h1>
                                             <p className="text-base font-comfortaa font-light text-pink-600 dark:text-pink-300 italic">
                                                 Find me across the digital universe! ✨
@@ -304,7 +304,7 @@ export default function MainPage() {
                                                 📬 Get In Touch! 📬
                                             </h1>
                                             <p className="text-base font-comfortaa font-light text-blue-600 dark:text-blue-300 italic">
-                                                I'd love to hear from you! ✨
+                                                I&apos;d love to hear from you! ✨
                                             </p>
                                         </div>
 
@@ -426,7 +426,7 @@ export default function MainPage() {
                                         {/* Footer */}
                                         <div className="text-center mt-4 p-3 bg-gradient-to-r from-blue-100 to-pink-100 dark:from-blue-900 dark:to-pink-900 rounded-lg border border-blue-200 dark:border-blue-700">
                                             <p className="text-sm font-comfortaa font-medium text-slate-700 dark:text-sky-100">
-                                                Don't be shy, reach out! 💖
+                                                Don&apos;t be shy, reach out! 💖
                                             </p>
                                             <p className="text-xs font-comfortaa font-light text-slate-600 dark:text-slate-300 mt-1">
                                                 I love meeting new people and hearing about cool projects! 🌟

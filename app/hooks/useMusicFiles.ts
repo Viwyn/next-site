@@ -38,6 +38,7 @@ export const useMusicFiles = () => {
                     setMusicFiles(existingFiles);
                 }
             } catch (error) {
+                console.error(error);
                 console.log('Could not load music files list, using fallback');
                 setMusicFiles(['/music/background.mp3']);
             } finally {

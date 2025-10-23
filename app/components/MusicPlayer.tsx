@@ -35,7 +35,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
                 await audio.play();
                 setIsPlaying(true);
             } catch (error) {
-                // Auto-play failed, which is expected without user interaction
+                console.error(error)
                 console.log('Auto-play prevented. User interaction required.');
             }
         };

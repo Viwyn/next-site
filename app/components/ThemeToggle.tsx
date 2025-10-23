@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -23,4 +23,4 @@ export default function ThemeToggle() {
             {theme === 'light' ? <FaSun className="text-orange-300" /> : <FaMoon className="text-violet-400" />}
         </button>
     );
-}
+};

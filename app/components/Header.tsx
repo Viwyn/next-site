@@ -1,5 +1,5 @@
-import React from 'react'
-import ThemeToggle from './ThemeToggle'
+import React from 'react';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
 
@@ -8,6 +8,6 @@ const Header = () => {
             <ThemeToggle />
         </div>
     )
-}
+};
 
-export default Header
+export default Header;

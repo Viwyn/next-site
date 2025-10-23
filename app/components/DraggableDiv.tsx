@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef, useEffect, ReactNode } from "react"
+import React, { useState, useRef, useEffect, ReactNode } from "react";
 
 interface DraggableFloatingDivProps {
     children?: ReactNode;
@@ -80,23 +80,23 @@ const DraggableFloatingDiv: React.FC<DraggableFloatingDivProps> = ({ children, i
 
     return (
         <div>
-            <button onClick={toggleInvisibility} className="bg-gray-700 text-black dark:text-white p-4 rounded-full shadow-xl transition-transform duration-150 hover:scale-110 cursor-pointer">
+            <button onClick={toggleInvisibility} className="bg-pink-200 dark:bg-sky-400 text-slate-600 dark:text-slate-800 p-4 rounded-full shadow-xl transition-transform duration-150 hover:scale-110 cursor-pointer hover:bg-pink-300 dark:hover:bg-sky-300">
                 {icon}
                 </button>
-            <div ref={divRef} className={`${isDragging ? 'cursor-grabbing' : 'cursor-default'} fixed z-99 bg-gray-700 text-black dark:text-white rounded-lg border-2 border-black dark:border:white shadow-xl select-none ${isDragging ? '' : 'transition-all duration-150'} flex flex-col ${!isHidden ? 'opacity-0 scale-0 pointer-events-none z-0' : 'opacity-100 scale-100 pointer-events-auto z-10'} max-w-1/2`} style={{ left: position.x, top: position.y }} onMouseDown={handleMouseDown}>
-                <div className="flex justify-between items-center">
-                    <p className="ml-3">{title}</p>
-                    <button onClick={toggleInvisibility} className="py-1 px-3 cursor-pointer text-white text-xl hover:scale-110 transition-transform duration-150">
+            <div ref={divRef} className={`${isDragging ? 'cursor-grabbing' : 'cursor-default'} max-w-3xl max-h-[600px] overflow-hidden  fixed z-99 bg-white dark:bg-slate-800 text-slate-700 dark:text-sky-200 rounded-lg shadow-xl select-none ${isDragging ? '' : 'transition-all duration-150'} flex flex-col ${!isHidden ? 'opacity-0 scale-0 pointer-events-none z-0' : 'opacity-100 scale-100 pointer-events-auto z-10'} max-w-1/2 custom-scrollbar font-comfortaa`} style={{ left: position.x, top: position.y }} onMouseDown={handleMouseDown}>
+                <div className="flex justify-between items-center bg-pink-100 dark:bg-slate-700 rounded-t-lg p-3">
+                    <p className="ml-3 text-slate-600 dark:text-sky-200 font-comfortaa font-medium text-xl">{title}</p>
+                    <button onClick={toggleInvisibility} className="py-1 px-3 cursor-pointer text-pink-500 dark:text-sky-300 text-xl hover:scale-110 transition-transform duration-150 hover:text-pink-600 dark:hover:text-sky-200">
                         X
                     </button>
                 </div>
-                <div>
+                <div className="overflow-y-auto overflow-x-hidden">
                     {children}
                 </div>
             </div>
         </div>
     )
-}
+};
 
-export default DraggableFloatingDiv
+export default DraggableFloatingDiv;
 

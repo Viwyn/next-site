@@ -39,17 +39,29 @@ const DraggableFloatingDiv: React.FC<DraggableFloatingDivProps> = ({ children, i
     }
 
     useEffect(() => {
+        let animationFrameId: number
+
         const handleMouseMove = (e: MouseEvent) => {
             if (!isDragging) return
 
-            setPosition({
-                x: e.clientX - initialMousePosition.x,
-                y: e.clientY - initialMousePosition.y,
+            // Cancel any pending animation frame
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId)
+            }
+
+            animationFrameId = requestAnimationFrame(() => {
+                setPosition({
+                    x: e.clientX - initialMousePosition.x,
+                    y: e.clientY - initialMousePosition.y,
+                })
             })
         }
 
         const handleMouseUp = () => {
             setIsDragging(false)
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId)
+            }
         }
 
         if (isDragging) {
@@ -60,6 +72,9 @@ const DraggableFloatingDiv: React.FC<DraggableFloatingDivProps> = ({ children, i
         return () => {
             window.removeEventListener("mousemove", handleMouseMove)
             window.removeEventListener("mouseup", handleMouseUp)
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId)
+            }
         }
     }, [isDragging, initialMousePosition])
 
@@ -68,7 +83,7 @@ const DraggableFloatingDiv: React.FC<DraggableFloatingDivProps> = ({ children, i
             <button onClick={toggleInvisibility} className="bg-gray-700 text-black dark:text-white p-4 rounded-full shadow-xl transition-transform duration-150 hover:scale-110 cursor-pointer">
                 {icon}
                 </button>
-            <div ref={divRef} className={`${isDragging ? 'cursor-grabbing' : 'cursor-default'} fixed z-99 bg-gray-700 text-black dark:text-white rounded-lg border-2 border-black dark:border:white shadow-xl select-none transition-all duration-150 flex flex-col ${!isHidden ? 'opacity-0 scale-0 pointer-events-none z-0' : 'opacity-100 scale-100 pointer-events-auto z-10'} max-w-1/2`} style={{ left: position.x, top: position.y }} onMouseDown={handleMouseDown}>
+            <div ref={divRef} className={`${isDragging ? 'cursor-grabbing' : 'cursor-default'} fixed z-99 bg-gray-700 text-black dark:text-white rounded-lg border-2 border-black dark:border:white shadow-xl select-none ${isDragging ? '' : 'transition-all duration-150'} flex flex-col ${!isHidden ? 'opacity-0 scale-0 pointer-events-none z-0' : 'opacity-100 scale-100 pointer-events-auto z-10'} max-w-1/2`} style={{ left: position.x, top: position.y }} onMouseDown={handleMouseDown}>
                 <div className="flex justify-between items-center">
                     <p className="ml-3">{title}</p>
                     <button onClick={toggleInvisibility} className="py-1 px-3 cursor-pointer text-white text-xl hover:scale-110 transition-transform duration-150">

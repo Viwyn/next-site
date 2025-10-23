@@ -229,7 +229,7 @@ function App() {
 			</div>
 			<div className="bg-white rounded-xl shadow-2xl p-8 w-full max-w-2xl border-5 border-[#3B82F6]">
 				<h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-					Share Your Donation Post
+					Talk about your charity
 				</h1>
 
 				{/* Removed userId display as there's no backend user management */}
@@ -260,7 +260,7 @@ function App() {
 						className="text-gray-700 text-sm font-medium mb-2 flex items-center"
 					>
 						<TagIcon className="w-5 h-5 mr-2 text-[#FBBF24]" />
-						Tags (comma-separated, e.g., react, ai, webdev)
+						Tags (comma-separated, e.g., environment, health, etc.)
 					</label>
 					<input
 						type="text"

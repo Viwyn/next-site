@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DraggableFloatingDiv from "./components/DraggableDiv";
 import { FaGithub, FaLink, FaLinkedin, FaUser, FaTwitter, FaInstagram, FaYoutube, FaDiscord, FaEnvelope} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SiSteam } from "react-icons/si";
-import Particles from "./components/Particles";
 
 export default function MainPage() {
     const [copiedDiscord, setCopiedDiscord] = useState(false);
@@ -40,36 +40,9 @@ export default function MainPage() {
         return { userTime, myTime, userTimezone };
     };
 
-    // Memoize the Particles component to prevent re-rendering on state changes
-    const particlesComponent = useMemo(() => (
-        <Particles
-            particleColors={["#F5A9B8", "#FFFFFF", "#5BCEFA", "#F5A9B8"]}
-            particleCount={1000}
-            particleSpread={20}
-            speed={0.5}
-            particleBaseSize={300}
-            moveParticlesOnHover={false}
-            alphaParticles={false}
-            disableRotation={true}
-        />
-    ), []);
-
     return (
         <div className="min-h-screen min-w-full flex flex-col items-center justify-center bg-pink-50 dark:bg-slate-900 relative">
-            <div
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    zIndex: 0,
-                    pointerEvents: "none",
-                }}
-            >
-                {particlesComponent}
-            </div>
-            <div className="relative z-1 flex flex-col items-center justify-center flex-grow w-full">
+            <div className="relative z-20 flex flex-col items-center justify-center flex-grow w-full">
                 <Header />
                 <main className="flex flex-col justify-center items-center flex-grow w-full">
                     <div className="border-2 rounded-xl border-pink-200 dark:border-sky-300 h-[450px] w-[750px] flex flex-col justify-center items-center bg-pink-100 dark:bg-slate-800 shadow-xl/40 dark:shadow-sky-400/20">
@@ -441,6 +414,17 @@ export default function MainPage() {
                                 </div>
                             </DraggableFloatingDiv>
                         </div>
+                    </div>
+                    
+                    {/* Login Link */}
+                    <div className="mt-6">
+                        <Link 
+                            href="/login" 
+                            className="inline-flex items-center px-4 py-2 border-2 border-pink-200 dark:border-sky-300 rounded-lg bg-white dark:bg-slate-700 text-slate-700 dark:text-sky-200 font-comfortaa font-medium hover:bg-pink-50 dark:hover:bg-slate-600 hover:border-pink-300 dark:hover:border-sky-400 transition-all duration-200 shadow-sm hover:shadow-md"
+                        >
+                            <FaUser className="mr-2" size={16} />
+                            Sign In
+                        </Link>
                     </div>
                 </main>
                 <Footer />

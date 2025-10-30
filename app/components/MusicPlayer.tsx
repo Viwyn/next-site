@@ -9,18 +9,50 @@ interface MusicPlayerProps {
     volume?: number;
 }
 
-const MusicPlayer: React.FC<MusicPlayerProps> = ({ 
-    musicFiles: propMusicFiles, 
-    volume = 0.3 
+const MusicPlayer: React.FC<MusicPlayerProps> = ({
+    musicFiles: propMusicFiles,
+    volume = 0.3
 }) => {
     const { musicFiles: dynamicMusicFiles, loading } = useMusicFiles();
     const musicFiles = propMusicFiles || dynamicMusicFiles;
-    
+
     const [isMuted, setIsMuted] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
     const [showControls, setShowControls] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
+
+    const nextTrack = () => {
+        setCurrentTrackIndex((prevIndex) =>
+            (prevIndex + 1) % musicFiles.length
+        );
+    };
+
+    const previousTrack = () => {
+        setCurrentTrackIndex((prevIndex) =>
+            prevIndex === 0 ? musicFiles.length - 1 : prevIndex - 1
+        );
+    };
+
+    const toggleMute = async () => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        if (isMuted) {
+            audio.muted = false;
+            if (!isPlaying) {
+                try {
+                    await audio.play();
+                    setIsPlaying(true);
+                } catch (error) {
+                    console.log('Failed to play audio:', error);
+                }
+            }
+        } else {
+            audio.muted = true;
+        }
+        setIsMuted(!isMuted);
+    };
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -53,39 +85,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
             audio.removeEventListener('ended', handleTrackEnd);
             audio.pause();
         };
-    }, [currentTrackIndex, musicFiles, volume]);
-
-    const nextTrack = () => {
-        setCurrentTrackIndex((prevIndex) => 
-            (prevIndex + 1) % musicFiles.length
-        );
-    };
-
-    const previousTrack = () => {
-        setCurrentTrackIndex((prevIndex) => 
-            prevIndex === 0 ? musicFiles.length - 1 : prevIndex - 1
-        );
-    };
-
-    const toggleMute = async () => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
-        if (isMuted) {
-            audio.muted = false;
-            if (!isPlaying) {
-                try {
-                    await audio.play();
-                    setIsPlaying(true);
-                } catch (error) {
-                    console.log('Failed to play audio:', error);
-                }
-            }
-        } else {
-            audio.muted = true;
-        }
-        setIsMuted(!isMuted);
-    };
+    }, [currentTrackIndex, musicFiles, volume, nextTrack]);
 
     // Handle first user interaction to start playing
     useEffect(() => {
@@ -121,7 +121,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
     return (
         <>
             <audio ref={audioRef} preload="auto" />
-            <div 
+            <div
                 className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2"
                 onMouseEnter={() => setShowControls(true)}
                 onMouseLeave={() => setShowControls(false)}
@@ -145,7 +145,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
                         </button>
                     </div>
                 )}
-                
+
                 {/* Mute button */}
                 <button
                     onClick={toggleMute}
@@ -158,7 +158,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({
                         <FaVolumeUp size={20} className="group-hover:animate-pulse" />
                     )}
                 </button>
-                
+
                 {/* Track info - only show when hovering and there are multiple tracks */}
                 {showControls && musicFiles.length > 1 && (
                     <div className="bg-black/50 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">

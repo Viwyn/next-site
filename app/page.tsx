@@ -1,50 +1,27 @@
 'use client';
 
-import { useState } from "react";
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DraggableFloatingDiv from "./components/DraggableDiv";
+import MobileAlert from "./components/MobileAlert";
+import { useMobileAlert } from "./hooks/useMobileAlert";
+import { useClipboard } from "./hooks/useClipboard";
+import { useTimezone } from "./hooks/useTimezone";
 import { FaGithub, FaLink, FaLinkedin, FaUser, FaTwitter, FaInstagram, FaYoutube, FaDiscord, FaEnvelope} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { SiSteam } from "react-icons/si";
 
 export default function MainPage() {
-    const [copiedDiscord, setCopiedDiscord] = useState(false);
-    const [showTimezone, setShowTimezone] = useState(false);
-
-    const copyDiscordUsername = async () => {
-        try {
-            await navigator.clipboard.writeText("viwyn");
-            setCopiedDiscord(true);
-            setTimeout(() => setCopiedDiscord(false), 2000);
-        } catch (err) {
-            console.error('Failed to copy username:', err);
-        }
-    };
-
-    const getUserTimezone = () => {
-        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const userTime = new Date().toLocaleTimeString('en-US', {
-            timeZone: userTimezone,
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-        const myTime = new Date().toLocaleTimeString('en-US', {
-            timeZone: 'Asia/Singapore', // GMT+8
-            hour12: false,
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-        return { userTime, myTime, userTimezone };
-    };
+    const { showAlert, dismissAlert } = useMobileAlert();
+    const { copied: copiedDiscord, copyToClipboard: copyDiscordUsername } = useClipboard("viwyn");
+    const { showTimezone, toggleTimezone, getTimezoneInfo } = useTimezone();
 
     return (
         <div className="min-h-screen min-w-full flex flex-col items-center justify-center bg-pink-50 dark:bg-slate-900 relative">
-            <div className="relative z-20 flex flex-col items-center justify-center flex-grow w-full">
+            <div className="relative z-20 flex flex-col items-center justify-center grow w-full">
                 <Header />
-                <main className="flex flex-col justify-center items-center flex-grow w-full">
+                <main className="flex flex-col justify-center items-center grow w-full">
                     <div className="border-2 rounded-xl border-pink-200 dark:border-sky-300 h-[450px] w-[750px] flex flex-col justify-center items-center bg-pink-100 dark:bg-slate-800 shadow-xl/40 dark:shadow-sky-400/20">
                         <p className="text-5xl font-comfortaa font-semibold text-slate-700 dark:text-sky-200">
                             Welcome, {" "}
@@ -79,7 +56,7 @@ export default function MainPage() {
 
                                         {/* first section with image on left */}
                                         <div className="flex items-center space-x-4">
-                                            <div className="w-24 h-24 bg-pink-300 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <div className="w-24 h-24 bg-pink-300 rounded-full flex items-center justify-center shrink-0">
                                                 <span className="text-2xl">🤖</span>
                                             </div>
                                             <div>
@@ -94,7 +71,7 @@ export default function MainPage() {
 
                                         {/* second section with image on right */}
                                         <div className="flex items-center space-x-4 flex-row-reverse">
-                                            <div className="w-20 h-20 ml-5 bg-blue-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <div className="w-20 h-20 ml-5 bg-blue-200 rounded-lg flex items-center justify-center shrink-0">
                                                 <span className="text-xl">💻</span>
                                             </div>
                                             <div className="text-right">
@@ -109,7 +86,7 @@ export default function MainPage() {
 
                                         {/* third section with image on left */}
                                         <div className="flex items-center space-x-4">
-                                            <div className="w-24 h-24 bg-purple-200 rounded-full flex items-center justify-center flex-shrink-0">
+                                            <div className="w-24 h-24 bg-purple-200 rounded-full flex items-center justify-center shrink-0">
                                                 <span className="text-2xl">🎵</span>
                                             </div>
                                             <div>
@@ -124,7 +101,7 @@ export default function MainPage() {
 
                                         {/* fourth section with image on right */}
                                         <div className="flex items-center space-x-4 flex-row-reverse">
-                                            <div className="w-20 h-20 ml-5 bg-green-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <div className="w-20 h-20 ml-5 bg-green-200 rounded-lg flex items-center justify-center shrink-0">
                                                 <span className="text-xl">🌟</span>
                                             </div>
                                             <div className="text-right">
@@ -138,7 +115,7 @@ export default function MainPage() {
                                         </div>
 
                                         {/* Call to action */}
-                                        <div className="text-center mt-4 p-4 bg-gradient-to-r from-pink-100 to-blue-100 dark:from-pink-600 dark:to-sky-700  rounded-lg">
+                                        <div className="text-center mt-4 p-4 bg-linear-to-r from-pink-100 to-blue-100 dark:from-pink-600 dark:to-sky-700  rounded-lg">
                                             <p className="text-sm font-comfortaa font-medium text-slate-600 dark:text-pink-200">
                                                 Feel free to explore around! This site is still a <span className="italic">work in progress</span>, but I hope you enjoy the journey! 💖
                                             </p>
@@ -256,7 +233,7 @@ export default function MainPage() {
                                         </div>
 
                                         {/* Fun footer */}
-                                        <div className="text-center mt-4 p-3 bg-gradient-to-r from-pink-100 to-blue-100 dark:from-slate-700 dark:to-slate-600 rounded-lg border border-pink-200 dark:border-slate-500">
+                                        <div className="text-center mt-4 p-3 bg-linear-to-r from-pink-100 to-blue-100 dark:from-slate-700 dark:to-slate-600 rounded-lg border border-pink-200 dark:border-slate-500">
                                             <p className="text-sm font-comfortaa font-medium text-slate-700 dark:text-sky-100">
                                                 Thanks for checking out my links! 💖
                                             </p>
@@ -291,7 +268,7 @@ export default function MainPage() {
                                             {/* Email */}
                                             <div className="bg-white dark:bg-blue-800 p-4 rounded-lg border border-blue-200 dark:border-blue-600 hover:shadow-md transition-all duration-200">
                                                 <div className="flex items-center space-x-4">
-                                                    <div className="w-16 h-16 bg-blue-200 dark:bg-blue-800 rounded-full flex items-center justify-center flex-shrink-0">
+                                                    <div className="w-16 h-16 bg-blue-200 dark:bg-blue-800 rounded-full flex items-center justify-center shrink-0">
                                                         <FaEnvelope className="text-2xl text-blue-600 dark:text-blue-300" />
                                                     </div>
                                                     <div className="flex-1">
@@ -311,7 +288,7 @@ export default function MainPage() {
                                             {/* discord */}
                                             <div className="bg-white dark:bg-purple-800 p-4 rounded-lg border border-purple-200 dark:border-purple-600 hover:shadow-md transition-all duration-200">
                                                 <div className="flex items-center space-x-4">
-                                                    <div className="w-16 h-16 bg-purple-200 dark:bg-purple-800 rounded-full flex items-center justify-center flex-shrink-0">
+                                                    <div className="w-16 h-16 bg-purple-200 dark:bg-purple-800 rounded-full flex items-center justify-center shrink-0">
                                                         <FaDiscord className="text-2xl text-purple-600 dark:text-purple-300" />
                                                     </div>
                                                     <div className="flex-1">
@@ -336,7 +313,7 @@ export default function MainPage() {
                                         </div>
 
                                         {/* Response Time Info */}
-                                        <div className="bg-gradient-to-r from-blue-50 to-pink-50 dark:from-blue-900 dark:to-pink-900 p-4 rounded-lg border border-blue-100 dark:border-blue-700">
+                                        <div className="bg-linear-to-r from-blue-50 to-pink-50 dark:from-blue-900 dark:to-pink-900 p-4 rounded-lg border border-blue-100 dark:border-blue-700">
                                             <div className="text-center">
                                                 <h3 className="text-lg font-comfortaa font-semibold text-slate-800 dark:text-sky-100 mb-2">
                                                     ⏰ Response Times
@@ -369,7 +346,7 @@ export default function MainPage() {
                                             {/* Timezone Section */}
                                             <div className="mt-3 p-3 bg-blue-50 dark:bg-slate-700 rounded-lg">
                                                 <button
-                                                    onClick={() => setShowTimezone(!showTimezone)}
+                                                    onClick={toggleTimezone}
                                                     className="text-sm font-comfortaa font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
                                                 >
                                                     🌍 Click to see our current times
@@ -380,13 +357,13 @@ export default function MainPage() {
                                                         <div className="flex justify-between items-center">
                                                             <span className="text-slate-600 dark:text-slate-300">Your current time:</span>
                                                             <span className="font-medium text-slate-700 dark:text-slate-200">
-                                                                {getUserTimezone().userTime}
+                                                                {getTimezoneInfo().userTime}
                                                             </span>
                                                         </div>
                                                         <div className="flex justify-between items-center">
                                                             <span className="text-slate-600 dark:text-slate-300">My time (GMT+8):</span>
                                                             <span className="font-medium text-blue-600 dark:text-blue-400">
-                                                                {getUserTimezone().myTime}
+                                                                {getTimezoneInfo().myTime}
                                                             </span>
                                                         </div>
                                                         <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 italic">
@@ -402,7 +379,7 @@ export default function MainPage() {
                                         </div>
 
                                         {/* Footer */}
-                                        <div className="text-center mt-4 p-3 bg-gradient-to-r from-blue-100 to-pink-100 dark:from-blue-900 dark:to-pink-900 rounded-lg border border-blue-200 dark:border-blue-700">
+                                        <div className="text-center mt-4 p-3 bg-linear-to-r from-blue-100 to-pink-100 dark:from-blue-900 dark:to-pink-900 rounded-lg border border-blue-200 dark:border-blue-700">
                                             <p className="text-sm font-comfortaa font-medium text-slate-700 dark:text-sky-100">
                                                 Don&apos;t be shy, reach out! 💖
                                             </p>
@@ -429,6 +406,9 @@ export default function MainPage() {
                 </main>
                 <Footer />
             </div>
+            
+            {/* Mobile Alert */}
+            <MobileAlert isVisible={showAlert} onDismiss={dismissAlert} />
         </div>
     );
 };

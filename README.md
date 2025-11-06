@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 My Personal Website
 
-## Getting Started
+## 🚀 Live Demo
 
-First, run the development server:
+This project serves as my personal website/portfolio, built as a modern, high-performance web application.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+You can view the live, deployed version here:
+**[View the Live Site](https://viwyn.com)**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This application is a work in progress, currently focused on demonstrating modern web development capabilities.
 
-## Learn More
+* **High Performance:** Built with Next.js for excellent SEO and fast load times using Server-Side Rendering (SSR) and Static Site Generation (SSG).
+* **Modern Styling:** Utilizes [Tailwind CSS or another modern CSS framework/approach - *Please specify which one you used here if not Tailwind*] for rapid and responsive UI development.
+* **TypeScript:** Fully written in TypeScript for improved code quality and maintainability.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is built using a modern, popular web development stack.
 
-## Deploy on Vercel
+| Tool | Description |
+| :--- | :--- |
+| **Framework** | Next.js (App Router) |
+| **Language** | TypeScript |
+| **Styling** | TailwindCSS |
+| **Deployment** | Vercel |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 💻 Getting Started
+
+Follow these steps to get a development environment up and running on your local machine. Feel free to mess around and explore if you'd like
+
+### Prerequisites
+
+You will need the following software installed:
+
+* Node.js (LTS version recommended)
+* npm, yarn, pnpm, or bun
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Viwyn/next-site.git](https://github.com/Viwyn/next-site.git)
+    cd next-site
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or yarn install
+    # or pnpm install
+    # or bun install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or yarn dev
+    # or pnpm dev
+    # or bun dev
+    ```
+
+4.  **View the application:**
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+## 🔗 Author
+
+* **GitHub:** [@Viwyn](https://github.com/Viwyn)
+* **Live Site:** [viwyn.com](https://viwyn.com)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
